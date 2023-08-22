@@ -11,9 +11,9 @@ public class Pessoa {
 		
 		void cadastra() {
 			nome = JOptionPane.showInputDialog("Informe o nome");
-			peso = Double.parseDouble(JOptionPane.showInputDialog("peso: "));
+			peso = Double.parseDouble(JOptionPane.showInputDialog("Peso: "));
 			sexo = JOptionPane.showInputDialog("Informe o sexo").toUpperCase().charAt(0);
-			altura = Double.parseDouble(JOptionPane.showInputDialog("altura: "));
+			altura = Double.parseDouble(JOptionPane.showInputDialog("Altura: "));
 			
 		}
 		
@@ -51,6 +51,6 @@ public class Pessoa {
 				return avaliacao;
 		}
 		String exibirDados() {
-			return nome + " - " + calculaImc() + " - " + avaliacao() + "\n";
+			return nome + " - IMC =" + calculaImc() + " - Avaliação = " + avaliacao() + "\n";
 		}
 }
