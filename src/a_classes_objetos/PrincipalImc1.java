@@ -7,7 +7,6 @@ public class PrincipalImc1 {
 		int n = Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade de pessoas"));
 		
 		Pessoa pessoas [] = new Pessoa[n];
-		
 		String resultado = "";
 		
 		for (int i=0;i<n;i++) {

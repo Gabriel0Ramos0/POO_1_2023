@@ -9,8 +9,6 @@ public class Carro {
 	double porcentagem;
 	String cor;
 	
-	
-	
 	void cadastra () {
 		marca = JOptionPane.showInputDialog(null, "Informe a marca");
 		fabricacao = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe o ano de fabricação"));
@@ -28,6 +26,7 @@ public class Carro {
 	String getcor () {
 		return cor;
 	}
+	
 	String exibirDados() {
 		return marca + " - " + cor + " - " + fabricacao + "\n";
 	}	

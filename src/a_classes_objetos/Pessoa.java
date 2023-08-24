@@ -49,8 +49,8 @@ public class Pessoa {
 					}
 				}
 				return avaliacao;
-		}
-		String exibirDados() {
-			return nome + " - IMC =" + calculaImc() + " - Avaliação = " + avaliacao() + "\n";
-		}
-}
+			}
+			String exibirDados() {
+				return nome + " - IMC =" + calculaImc() + " - Avaliação = " + avaliacao() + "\n";
+			}
+	}

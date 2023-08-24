@@ -16,21 +16,17 @@ public class PrincipalImc2 {
 		
 		do {
 			op = Integer.parseInt(JOptionPane.showInputDialog(menu));
-			
 			if (op == 1) {
 				Pessoa p = new Pessoa();
 				p.cadastra();
 				pessoas.add(p);
-			}
-			
-			if (op ==2) {
+			} else if (op ==2) {
 				String result = "Pessoas Cadastradas\n\n";
 				for (Pessoa p: pessoas) {
 					result += p.exibirDados();
 				}
 				JOptionPane.showMessageDialog(null, result);
-				}
-			
-			} while(op != 3);
+			}
+		} while(op != 3);
 	}
 }
