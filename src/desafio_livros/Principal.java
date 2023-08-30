@@ -51,7 +51,7 @@ public class Principal {
 			    JOptionPane.showMessageDialog(null, result);
 				
 			}else if (op ==4) {
-				String result = "Livros que Autores tem filhos menores de 12\n";
+				String result = "Livros que Autores tem filhos menores de 13\n";
 				for (Livro livro : livros) {
 			        for (Autor autor : livro.getAutores()) {
 			            if ("SIM".equalsIgnoreCase(autor.getFilho()) && autor.getIdadef() <= 12) {

@@ -14,9 +14,9 @@ public class Autor {
 		setNome (JOptionPane.showInputDialog(null, "Informe o nome do autor"));
 		setSexo (JOptionPane.showInputDialog(null, "Informe o sexo"));
 		setIdade (Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a idade")));
-		setFilho (JOptionPane.showInputDialog(null, "Tem filhos?" + "\n Sim ou Não").toUpperCase());
+		setFilho (JOptionPane.showInputDialog(null, "Possui filho com menos de 13 anos?" + "\n Sim ou Não").toUpperCase());
 		if (getFilho().equalsIgnoreCase("SIM")) {
-            setIdadef (Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a idade do mais velho")));
+            setIdadef (Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a idade do mais novo")));
         }
 	}
 	
