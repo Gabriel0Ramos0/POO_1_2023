@@ -58,10 +58,10 @@ public class Livro {
 	}
 
 	public void setPreço(double preço) {
-		if (preço > 0) {
+		if (preço <= 0) {
             this.preço = preço;
         } else {
-            JOptionPane.showMessageDialog(null, "O preço deve ser maior que zero.");
+            setPreço(Double.parseDouble(JOptionPane.showInputDialog(null, "O preço deve ser maior que zero.")));
         }
 	}
 

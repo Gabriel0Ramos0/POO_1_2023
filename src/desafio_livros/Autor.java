@@ -11,7 +11,7 @@ public class Autor {
 	private int idadef;
 	
 	public void cadastraautor() {
-		setNome (JOptionPane.showInputDialog(null, "Informe o nome do autor"));
+		setNome (JOptionPane.showInputDialog(null, "Informe o nome do autor").trim());
 		setSexo (JOptionPane.showInputDialog(null, "Informe o sexo"));
 		setIdade (Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a idade")));
 		setFilho (JOptionPane.showInputDialog(null, "Possui filho com menos de 13 anos?" + "\n Sim ou Não").toUpperCase());
@@ -45,7 +45,7 @@ public class Autor {
 		if (sexo.equalsIgnoreCase("Masculino") || sexo.equalsIgnoreCase("Feminino")) {
             this.sexo = sexo;
         } else {
-            JOptionPane.showMessageDialog(null, "O sexo deve ser Masculino ou Feminino.");
+            setSexo(JOptionPane.showInputDialog(null, "O sexo deve ser Masculino ou Feminino."));
         }
 	}
 
@@ -57,7 +57,7 @@ public class Autor {
 		if (idade > 0) {
             this.idade = idade;
         } else {
-            JOptionPane.showMessageDialog(null, "A idade deve ser maior que zero.");
+            setIdade (Integer.parseInt(JOptionPane.showInputDialog(null, "A idade deve ser maior que zero.")));
         }
 	}
 
