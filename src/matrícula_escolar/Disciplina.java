@@ -11,6 +11,7 @@ public class Disciplina {
 	private Professor professor;
 	static ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
 	static ArrayList <Professor> professores = new ArrayList<Professor>();
+	static ArrayList <Aluno> alunos = new ArrayList <Aluno>();
 	
 	public void cadastraD() {
 		String nome = JOptionPane.showInputDialog(null, "Informe o nome da disciplina");
@@ -53,6 +54,22 @@ public class Disciplina {
 
 	    return info.toString();
 	}
+	
+	public String exibirA(Aluno aluno) {
+	    for (Aluno a : alunos) {
+	        if (a.getNome().equalsIgnoreCase(aluno.getNome())) {
+	            ArrayList<Double> notasAluno = a.getNotas();
+	            double soma = 0;
+	            for (Double nota : notasAluno) {
+	                soma += nota;
+	            }
+	            double media = soma / 3;
+	            return "Aluno: " + aluno.getNome() + "\nDisciplina: " + getNome() + "\nMédia: " + media;
+	        }
+	    }
+	    return "Aluno não encontrado nesta disciplina.";
+	}
+
 
 	public String getNome() {
 		return nome;
@@ -93,7 +110,22 @@ public class Disciplina {
 	    }
 	    return false;
 	}
-
+	
+	public void adicionarNota(Aluno aluno, double nota) {
+        // Encontrar o aluno na lista de alunos
+        for (Aluno a : alunos) {
+            if (a.getNome().equalsIgnoreCase(aluno.getNome())) {
+                a.getNotas().add(nota);
+                break;
+            }
+        }
+    }
+	
+	public void cadastraA() {
+		Aluno a = new Aluno();
+		a.cadastraA();
+		alunos.add(a);
+	}
 	
 	public void cadastraP() {
 		Professor p = new Professor();

@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 public class Principal {
 	public static void main(String[] args) {
 		ArrayList <Disciplina> disciplinas = new ArrayList<Disciplina>();
+		Disciplina disciplinaSelecionada = null;
+		Aluno alunoSelecionado = null;
 		
 		String menu = "1 - Cadastrar Professor\n"
 				+ "2 - Cadastrar Disciplina\n"
@@ -35,13 +37,19 @@ public class Principal {
 			
 			if (op == 3) {
 				Disciplina d = new Disciplina();
-				d.cadastraP();
+				d.cadastraA();
 				disciplinas.add(d);
 			}
 			
 			if (op == 4) {
-				
+			    if (disciplinaSelecionada != null && alunoSelecionado != null) {
+			        String mensagem = disciplinaSelecionada.exibirA(alunoSelecionado);
+			        JOptionPane.showMessageDialog(null, mensagem);
+			    } else {
+			        JOptionPane.showMessageDialog(null, "Nenhum aluno ou disciplina selecionado.");
+			    }
 			}
+
 			
 			if (op == 5) {
 			    StringBuilder disciplinasComPosGraduacao = new StringBuilder("Disciplinas com professores com Pós Graduação:\n");
