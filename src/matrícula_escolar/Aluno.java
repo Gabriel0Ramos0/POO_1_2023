@@ -7,68 +7,40 @@ import javax.swing.JOptionPane;
 public class Aluno {
 	
 	private String nome;
-	private String disc;
-	private int n;
-	ArrayList <Disciplina> disciplinas = new ArrayList<Disciplina>();
-	private ArrayList<Double> notas = new ArrayList<>();
+	private ArrayList<Disciplina> discMatriculadas = new ArrayList<Disciplina>();
+	private ArrayList<Notas> notas = new ArrayList<Notas>();
 	
 	public void cadastraA() {
-        setNome(JOptionPane.showInputDialog(null, "Informe o nome do aluno"));
-
-        Disciplina disciplinaEscolhida = escolherDisciplina();
-
-        if (disciplinaEscolhida != null) {
-            for (int i = 0; i < 3; i++) {
-                double nota = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe a nota " + (i + 1)));
-                notas.add(nota);
-                disciplinaEscolhida.adicionarNota(this, nota);
-            }
-
-            JOptionPane.showMessageDialog(null, "Aluno matriculado na disciplina: " + disciplinaEscolhida.getNome());
-        }
-        
-    }
-
-    public ArrayList<Double> getNotas() {
-        return notas;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    private Disciplina escolherDisciplina() {
-        String nomeDisciplina = JOptionPane.showInputDialog(null, "Informe o nome da disciplina");
-
-        for (Disciplina disciplina : Disciplina.disciplinas) {
-            if (disciplina.getNome().equalsIgnoreCase(nomeDisciplina)) {
-                return disciplina;
-            }
-        }
-        
-        Disciplina novaDisciplina = new Disciplina();
-        novaDisciplina.setNome(nomeDisciplina);
-        Disciplina.disciplinas.add(novaDisciplina);
-        return novaDisciplina;
-    }
-
-	public String getDisc() {
-		return disc;
+		setNome(JOptionPane.showInputDialog("Nome do aluno"));
 	}
-
-	public void setDisc(String disc) {
-		this.disc = disc;
+	
+	public double mediaN() {
+		double media =0;
+		for (Notas n : notas) {
+			media = ((n.getN1() + n.getN2() + n.getN3())/3);
+		} return media;
 	}
-
-	public int getN() {
-		return n;
+	
+	public String getNome() {
+		return nome;
 	}
-
-	public void setN(int n) {
-		this.n = n;
+	public void setNome(String nome) {
+		if(nome != null && !nome.isEmpty()) {
+			this.nome = nome;
+		}else {
+			setNome(JOptionPane.showInputDialog("É nescessário informar o nome!"));
+		}
+	}
+	public ArrayList<Disciplina> getDiscMatriculadas() {
+		return discMatriculadas;
+	}
+	public void setDiscMatriculadas(ArrayList<Disciplina> discMatriculadas) {
+		this.discMatriculadas = discMatriculadas;
+	}
+	public ArrayList<Notas> getNotas() {
+		return notas;
+	}
+	public void setNotas(ArrayList<Notas> notas) {
+		this.notas = notas;
 	}
 }

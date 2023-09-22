@@ -6,8 +6,11 @@ public class Professor {
 	
 	private String nome;
 	private String formacao;
-	private String materia;
 	private int nu;
+	
+	public Professor() {
+		cadastraP();
+	}
 	
 	public void cadastraP() {
 		setNome(JOptionPane.showInputDialog(null, "Informe o nome do professor"));
@@ -16,14 +19,15 @@ public class Professor {
 		
 		if (nu == 1){
 			setFormacao ("Graduação");
-			setMateria (JOptionPane.showInputDialog(null, "Informe a matéria da " + getFormacao()));
 		} else if (nu == 2){
 			setFormacao ("Especialização");
-			setMateria (JOptionPane.showInputDialog(null, "Informe a matéria da " + getFormacao()));
 		} else if (nu == 3){
 			setFormacao ("Pós Graduação");
-			setMateria (JOptionPane.showInputDialog(null, "Informe a matéria da " + getFormacao()));
 		}
+	}
+	
+	public String exibirDados() {
+		return getNome()+"("+getFormacao()+")";
 	}
 
 	public String getNome() {
@@ -31,7 +35,7 @@ public class Professor {
 	}
 
 	public void setNome(String nome) {
-		if(nome!="") {
+		if(nome != null && !nome.isEmpty()) {
 			this.nome = nome;
 		}else {
 			setNome(JOptionPane.showInputDialog("É nescessário informar o nome!"));
@@ -46,28 +50,15 @@ public class Professor {
 		this.formacao = formacao;
 	}
 
-	public String getMateria() {
-		return materia;
-	}
-
-	public void setMateria(String materia) {
-		if (materia!="") {
-		this.materia = materia;
-		} else {
-			setMateria(JOptionPane.showInputDialog(null, "Informe a matéria correspondente a formação!"));
-		}
-	}
-
 	public int getN() {
 		return nu;
 	}
 
 	public void setNu(int nu) {
-		if(nu >= 1 && nu <=3) {
-			this.nu = nu;
-		}else {
-			setNu (Integer.parseInt(JOptionPane.showInputDialog("Informe um número correspondente! (1/2/3)")));
-		}
-	}
-		
+	    while (nu < 1 || nu > 3) {
+	        String input = JOptionPane.showInputDialog("Informe um número correspondente! (1/2/3)");
+	        nu = Integer.parseInt(input);
+	    }
+	    this.nu = nu; 
+	}		
 }
