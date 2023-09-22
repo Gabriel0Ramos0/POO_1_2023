@@ -21,7 +21,11 @@ public class Pessoa {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		if(nome != null && !nome.isEmpty()) {
+			this.nome = nome;
+		} else {
+			setNome(JOptionPane.showInputDialog("Informe o Nome da Pessoa!"));
+		}
 	}
 
 	public String getSintoma() {
@@ -29,6 +33,11 @@ public class Pessoa {
 	}
 
 	public void setSintoma(String sintoma) {
-		this.sintoma = sintoma;
+		if (sintoma != null && !sintoma.isEmpty()) {
+			this.sintoma = sintoma;
+		} else {
+			setSintoma(JOptionPane.showInputDialog(null, "Informe o Sintoma!")); 
+		}
+		
 	}
 }

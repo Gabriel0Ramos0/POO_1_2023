@@ -32,7 +32,7 @@ public class Medicamento {
 	public void setNome(String nome) {
 		if(nome != null && !nome.isEmpty()) {
 			this.nome = nome;
-		}else {
+		} else {
 			setNome(JOptionPane.showInputDialog("É nescessário informar o nome do medicamento!"));
 		}
 	}
