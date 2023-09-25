@@ -6,6 +6,7 @@ public class Pessoa {
 	
 	private String nome;
 	private String sintoma;
+	private Medicamento medicamento;
 	
 	public Pessoa() {
 		cadastraP();
@@ -26,7 +27,7 @@ public class Pessoa {
 		} else {
 			setNome(JOptionPane.showInputDialog("Informe o Nome da Pessoa!"));
 		}
-	}
+	}	
 
 	public String getSintoma() {
 		return sintoma;
@@ -38,6 +39,14 @@ public class Pessoa {
 		} else {
 			setSintoma(JOptionPane.showInputDialog(null, "Informe o Sintoma!")); 
 		}
-		
 	}
+
+	public Medicamento getMedicamento() {
+		return medicamento;
+	}
+
+	public void setMedicamento(Medicamento medicamento) {
+		this.medicamento = medicamento;
+	}
+	
 }
