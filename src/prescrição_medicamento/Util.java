@@ -6,25 +6,30 @@ import javax.swing.JOptionPane;
 
 public class Util {
 
-		static private Medicamento selecionaMedi(ArrayList<Medicamento> lista) {
-			String MenuIn = "";
-			int cont = 1;
-			for (Medicamento a : lista) {
-				MenuIn = cont + " - " + a.getNome()+"\n";
-				cont ++;
-			}
-			int escolha = Integer.parseInt(JOptionPane.showInputDialog(MenuIn));
-			return lista.get(escolha-1);
-		}
+	public static Medicamento selecionaMedi(ArrayList<Medicamento> lista) {
+	    StringBuilder menuBuilder = new StringBuilder();
+	    int cont = 1;
+	    
+	    for (Medicamento a : lista) {
+	        menuBuilder.append(cont).append(" - ").append(a.getNome()).append("\n");
+	        cont++;
+	    }
+	    
+	    int escolha = Integer.parseInt(JOptionPane.showInputDialog(menuBuilder.toString()));
+	    return lista.get(escolha - 1);
+	}
+
 		
-		static private Pessoa selecionaPessoa (ArrayList<Pessoa> lista) {
-			String MenuIn = "";
+		public static Pessoa selecionaPessoa (ArrayList<Pessoa> lista) {
+			StringBuilder menuBuilder = new StringBuilder();
 			int cont = 1;
 			for (Pessoa a : lista) {
-				MenuIn = cont + " - " + a.getNome()+"\n";
-				cont ++;
-			}
-			int escolha = Integer.parseInt(JOptionPane.showInputDialog(MenuIn));
-			return lista.get(escolha-1);
+				menuBuilder.append(cont).append(" - ").append(a.getNome()).append("\n");
+		        cont++;
+		    }
+		    
+		    int escolha = Integer.parseInt(JOptionPane.showInputDialog(menuBuilder.toString()));
+		    return lista.get(escolha - 1);
 		}
+		
 }

@@ -22,7 +22,7 @@ public class Medicamento {
         setNome(JOptionPane.showInputDialog(null, "Informe o nome do medicamento"));
         JOptionPane.showMessageDialog(null, "Administração:\n" + "\n1- Injetável" + "\n2- Tópico" + "\n3- Oral");
         setNu(Integer.parseInt(JOptionPane.showInputDialog(null, "Informe um número correspondente! (1/2/3)")));
-        
+
         if (nu == 1) {
             setTipo("Injetável");
         } else if (nu == 2) {
@@ -42,6 +42,11 @@ public class Medicamento {
             contraindicação.cadastraContraInd();
             contraindicações.add(contraindicação);
         }
+    }
+    public String exibirNome() {
+        StringBuilder detalhes = new StringBuilder();
+        detalhes.append("Nome: ").append(getNome()).append("\n"); 
+        return detalhes.toString();
     }
     
     public String exibirDetalhes() {
@@ -89,5 +94,22 @@ public class Medicamento {
 	        nu = Integer.parseInt(input);
 	    }
 	    this.nu = nu; 
+	}
+
+	public ArrayList<Indicação> getIndicações() {
+		return indicações;
+	}
+
+	public void setIndicações(ArrayList<Indicação> indicações) {
+		this.indicações = indicações;
+	}
+
+	public ArrayList<ContraIndicação> getContraindicações() {
+		return contraindicações;
+	}
+
+	public void setContraindicações(ArrayList<ContraIndicação> contraindicações) {
+		this.contraindicações = contraindicações;
 	}	
+	
 }

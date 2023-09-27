@@ -23,4 +23,5 @@ public class Indicação {
 	public void setIndica(String indica) {
 		this.indica = indica;
 	}
+	
 }

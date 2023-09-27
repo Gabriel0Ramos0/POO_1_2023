@@ -22,5 +22,6 @@ public class ContraIndicação {
 
 	public void setContraindica(String contraindica) {
 		this.contraindica = contraindica;
-	}	
+	}
+	
 }
