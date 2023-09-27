@@ -65,11 +65,10 @@ public class Principal {
 	            break;
 	        }
 	    }
-
-	    for (Condição condição : pessoa.getCondições()) {
-	        if (medicamento.getContraindicações().contains(condição.getCondi())) {
+	    
+	    for (String condição : pessoa.getCondições()) {
+	        if (medicamento.getContraindicações().contains(condição)) {
 	            contraIndicacaoEncontrada = true;
-	            break;
 	        }
 	    }
 
@@ -78,6 +77,9 @@ public class Principal {
 	        JOptionPane.showMessageDialog(null, "Medicamento prescrito com sucesso!");
 	    } else if (contraIndicacaoEncontrada) {
 	        JOptionPane.showMessageDialog(null, "O medicamento escolhido não é indicado devido à condição da pessoa.");
+	    } else if (sintomaCorrespondente) {
+	        pessoa.setMedicamento(medicamento);
+	        JOptionPane.showMessageDialog(null, "Medicamento prescrito com sucesso, embora a condição não esteja na contraindicação.");
 	    } else {
 	        JOptionPane.showMessageDialog(null, "Não é possível prescrever o medicamento para esta pessoa.");
 	    }
