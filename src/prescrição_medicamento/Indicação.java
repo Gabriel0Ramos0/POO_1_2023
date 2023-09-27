@@ -21,7 +21,10 @@ public class Indicação {
 	}
 
 	public void setIndica(String indica) {
-		this.indica = indica;
+		if(indica != null && !indica.isEmpty()) {
+			this.indica = indica;
+		} else {
+			setIndica(JOptionPane.showInputDialog("Informe a indicação!"));
+		}
 	}
-	
 }

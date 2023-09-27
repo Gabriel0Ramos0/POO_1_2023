@@ -21,7 +21,10 @@ public class ContraIndicação {
 	}
 
 	public void setContraindica(String contraindica) {
-		this.contraindica = contraindica;
+		if(contraindica != null && !contraindica.isEmpty()) {
+			this.contraindica = contraindica;
+		} else {
+			setContraindica(JOptionPane.showInputDialog("Informe a Contra Indicação!"));
+		}
 	}
-	
 }

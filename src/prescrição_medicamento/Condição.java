@@ -21,7 +21,10 @@ public class Condição {
 	}
 
 	public void setCondi(String condi) {
-		this.condi = condi;
+		if(condi != null && !condi.isEmpty()) {
+			this.condi = condi;
+		} else {
+			setCondi(JOptionPane.showInputDialog("Informe a Condição!"));
+		}
 	}
-	
 }

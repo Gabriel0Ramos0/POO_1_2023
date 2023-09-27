@@ -111,5 +111,4 @@ public class Medicamento {
 	public void setContraindicações(ArrayList<ContraIndicação> contraindicações) {
 		this.contraindicações = contraindicações;
 	}	
-	
 }

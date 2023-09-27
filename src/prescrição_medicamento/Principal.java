@@ -52,13 +52,12 @@ public class Principal {
 			}			
 		}while(op!=5);
 	}
+	
 	public static void prescreverMedicamento() {
 	    Pessoa pessoa = Util.selecionaPessoa(pessoas);
 	    Medicamento medicamento = Util.selecionaMedi(medicamentos);
-
 	    boolean sintomaCorrespondente = false;
 	    boolean contraIndicacaoEncontrada = false;
-	    boolean sintomaNaContraIndicacao = false;
 
 	    for (Indicação indicacao : medicamento.getIndicações()) {
 	        if (indicacao.getIndica().equalsIgnoreCase(pessoa.getSintoma())) {
@@ -74,22 +73,13 @@ public class Principal {
 	        }
 	    }
 
-	    for (ContraIndicação contraindicação : medicamento.getContraindicações()) {
-	        if (contraindicação.getContraindica().equalsIgnoreCase(pessoa.getSintoma())) {
-	            sintomaNaContraIndicacao = true;
-	            break;
-	        }
-	    }
-
-	    if (sintomaCorrespondente && !contraIndicacaoEncontrada && !sintomaNaContraIndicacao) {
+	    if (sintomaCorrespondente && !contraIndicacaoEncontrada) {
 	        pessoa.setMedicamento(medicamento);
 	        JOptionPane.showMessageDialog(null, "Medicamento prescrito com sucesso!");
-	    } else if (sintomaNaContraIndicacao) {
-	        JOptionPane.showMessageDialog(null, "O medicamento não pode ser receitado devido ao sintoma estar na contra-indicação.");
 	    } else if (contraIndicacaoEncontrada) {
 	        JOptionPane.showMessageDialog(null, "O medicamento escolhido não é indicado devido à condição da pessoa.");
 	    } else {
 	        JOptionPane.showMessageDialog(null, "Não é possível prescrever o medicamento para esta pessoa.");
 	    }
-	}	
+	}
 }

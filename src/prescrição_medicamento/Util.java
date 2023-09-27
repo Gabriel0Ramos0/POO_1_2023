@@ -14,11 +14,9 @@ public class Util {
 	        menuBuilder.append(cont).append(" - ").append(a.getNome()).append("\n");
 	        cont++;
 	    }
-	    
 	    int escolha = Integer.parseInt(JOptionPane.showInputDialog(menuBuilder.toString()));
 	    return lista.get(escolha - 1);
 	}
-
 		
 		public static Pessoa selecionaPessoa (ArrayList<Pessoa> lista) {
 			StringBuilder menuBuilder = new StringBuilder();
@@ -27,9 +25,7 @@ public class Util {
 				menuBuilder.append(cont).append(" - ").append(a.getNome()).append("\n");
 		        cont++;
 		    }
-		    
 		    int escolha = Integer.parseInt(JOptionPane.showInputDialog(menuBuilder.toString()));
 		    return lista.get(escolha - 1);
 		}
-		
 }

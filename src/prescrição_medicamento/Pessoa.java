@@ -67,5 +67,4 @@ public class Pessoa {
 	public void setCondições(ArrayList<Condição> condições) {
 		this.condições = condições;
 	}
-	
 }
