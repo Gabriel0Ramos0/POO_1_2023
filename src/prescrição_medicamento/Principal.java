@@ -56,29 +56,34 @@ public class Principal {
 	public static void prescreverMedicamento() {
 	    Pessoa pessoa = Util.selecionaPessoa(pessoas);
 	    Medicamento medicamento = Util.selecionaMedi(medicamentos);
+
 	    boolean sintomaCorrespondente = false;
 	    boolean contraIndicacaoEncontrada = false;
 
-	    for (Indicação indicacao : medicamento.getIndicações()) {
-	        if (indicacao.getIndica().equalsIgnoreCase(pessoa.getSintoma())) {
+	    for (Indicação indicação : medicamento.getIndicações()) {
+	        if (pessoa.getSintoma().equalsIgnoreCase(indicação.getIndica())) {
 	            sintomaCorrespondente = true;
 	            break;
 	        }
 	    }
 	    
 	    for (String condição : pessoa.getCondições()) {
-	        if (medicamento.getContraindicações().contains(condição)) {
-	            contraIndicacaoEncontrada = true;
+	        for (ContraIndicação contraindicação : medicamento.getContraindicações()) {
+	            if (condição.equalsIgnoreCase(contraindicação.getContraindica())) {
+	                contraIndicacaoEncontrada = true;
+	                break;
+	            }
+	        }
+	        if (contraIndicacaoEncontrada) {
+	            break;
 	        }
 	    }
-
 	    if (sintomaCorrespondente && !contraIndicacaoEncontrada) {
 	        pessoa.setMedicamento(medicamento);
 	        JOptionPane.showMessageDialog(null, "Medicamento prescrito com sucesso!");
 	    } else if (contraIndicacaoEncontrada) {
 	        JOptionPane.showMessageDialog(null, "O medicamento escolhido não é indicado devido à condição da pessoa.");
 	    } else if (sintomaCorrespondente) {
-	        pessoa.setMedicamento(medicamento);
 	        JOptionPane.showMessageDialog(null, "Medicamento prescrito com sucesso, embora a condição não esteja na contraindicação.");
 	    } else {
 	        JOptionPane.showMessageDialog(null, "Não é possível prescrever o medicamento para esta pessoa.");

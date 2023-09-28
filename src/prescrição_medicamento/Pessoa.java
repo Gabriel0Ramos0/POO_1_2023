@@ -8,7 +8,7 @@ public class Pessoa {
     private String nome;
     private String sintoma;
     private Medicamento medicamento;
-    private ArrayList<String> condições; // Lista de condições de saúde como strings
+    private ArrayList<String> condições;
 
     public Pessoa() {
         condições = new ArrayList<>();
