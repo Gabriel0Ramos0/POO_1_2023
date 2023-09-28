@@ -36,7 +36,7 @@ public class Medicamento {
             indicação.cadastraInd();
             indicações.add(indicação);
         }
-        int numContraindicações = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a quantidade de Contra Indicações"));
+        int numContraindicações = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a quantidade de Contra Indicações" + "\nInforme 0 caso não tenha"));
         for (int i = 0; i < numContraindicações; i++) {
             ContraIndicação contraindicação = new ContraIndicação();
             contraindicação.cadastraContraInd();

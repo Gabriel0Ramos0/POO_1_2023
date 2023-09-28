@@ -41,7 +41,7 @@ public class Principal {
 
 			        Medicamento medicamentoPrescrito = pessoa.getMedicamento();
 			        if (medicamentoPrescrito != null) {
-			            detalhes.append("\nMedicamento Prescrito:\n");
+			            detalhes.append("---------------------------------\nMedicamento Prescrito:\n");
 			            detalhes.append(medicamentoPrescrito.exibirNome()).append("\n");
 			        } else {
 			            detalhes.append("Nenhum medicamento prescrito para esta pessoa.\n");
