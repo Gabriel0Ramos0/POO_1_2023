@@ -18,7 +18,7 @@ public class Principal {
 			op = Integer.parseInt(JOptionPane.showInputDialog(menu));
 			
 			if (op == 1) {
-				
+				JOptionPane.showMessageDialog(null, menu);
 			}
 			if (op == 2) {
 				
