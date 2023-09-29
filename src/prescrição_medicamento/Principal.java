@@ -13,7 +13,7 @@ public class Principal {
 				+ "2 - Cadastrar Pessoa\n"
 				+ "3 - Fazer Prescrição para uma Pessoa\n"
 				+ "4 - Listar Todas as Pessoas e seus Medicamentos\n"
-				+ "5 - Sair";
+				+ "5 - Sair!";
 		int op = 0;
 		do {
 			op = Integer.parseInt(JOptionPane.showInputDialog(menu));
