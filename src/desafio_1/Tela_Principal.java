@@ -12,7 +12,7 @@ public class Tela_Principal {
 		String menu = "1 - Cadastrar\n"
 				+ "2 - Buscar por ano de fabricação\n"
 				+ "3 - Buscar por marca\n"
-				+ "4 - Buscar por Cor\n\n"
+				+ "4 - Buscar por Cor\n"
 				+ "5 - Sair";
 		int op = 0;
 		do {
