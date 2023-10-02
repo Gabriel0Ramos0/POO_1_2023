@@ -4,18 +4,18 @@ import javax.swing.JOptionPane;
 
 public class Condominio {
 	
-	private String apartamento;
+	private String condiminio;
 	
-	public void cadastraA() {
-		setApartamento(JOptionPane.showInputDialog(null, "Informe o apartamento"));
+	public void cadastraC() {
+		setCondiminio(JOptionPane.showInputDialog(null, "Informe o apartamento"));
 	}
 
-	public String getApartamento() {
-		return apartamento;
+	public String getCondiminio() {
+		return condiminio;
 	}
 
-	public void setApartamento(String apartamento) {
-		this.apartamento = apartamento;
+	public void setCondiminio(String condiminio) {
+		this.condiminio = condiminio;
 	}
 	
 }
