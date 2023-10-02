@@ -30,14 +30,25 @@ public class Condominio {
 	    int ano = Integer.parseInt(JOptionPane.showInputDialog("Informe o ano da despesa"));
 	    int mes = Integer.parseInt(JOptionPane.showInputDialog("Informe o mês da despesa"));
 	    StringBuilder valoresDevidos = new StringBuilder("Total devido por proprietário: \n\n");
+	    boolean dataEncontrada = false;
 
 	    for (Apartamento a : apartamento) {
 	        double valorApartamento = a.calculaValorApartamento();
-	        double valorDespesas = calcularTotalDespesaPorApartamento(ano, mes);
+	        double valorDespesas = 0;
+	        for (Despesas d : despesas) {
+	            if (d.getAno() == ano && d.getMes() == mes) {
+	                valorDespesas += d.getValor() / apartamento.size();
+	                dataEncontrada = true;
+	            }
+	        }
 	        double valorTotal = valorApartamento + valorDespesas;
 	        valoresDevidos.append("Proprietário: ").append(a.getNome()).append("\nR$: ").append(valorTotal).append("\n");
 	    }
-	    JOptionPane.showMessageDialog(null, valoresDevidos.toString());
+	    if (!dataEncontrada) {
+	        JOptionPane.showMessageDialog(null, "Não há dados referentes à data solicitada.");
+	    } else {
+	        JOptionPane.showMessageDialog(null, valoresDevidos.toString());
+	    }
 	}
 	
 	private double calcularTotalDespesaPorApartamento(int ano, int mes) {
@@ -71,16 +82,28 @@ public class Condominio {
 	    int ano = Integer.parseInt(JOptionPane.showInputDialog("Informe o ano da despesa"));
 	    int mes = Integer.parseInt(JOptionPane.showInputDialog("Informe o mês da despesa"));
 	    StringBuilder extrato = new StringBuilder("Extrato do apartamento: ").append(nApartamento).append("\n\n");
+	    boolean dataEncontrada = false;
+
 	    for (Apartamento a : apartamento) {
 	        if (a.getNumero() == nApartamento) {
 	            double valorApartamento = a.calculaValorApartamento();
-	            double valorTotal = valorApartamento + calcularTotalDespesaPorApartamento(ano, mes);
+	            double valorDespesas = 0;
+	            for (Despesas d : despesas) {
+	                if (d.getAno() == ano && d.getMes() == mes) {
+	                    valorDespesas += d.getValor() / apartamento.size();
+	                    dataEncontrada = true;
+	                }
+	            }
 	            extrato.append("Despesas: \n").append(extratoDespesaPorApartamento(ano, mes))
-	            		.append("Condomínio - R$: ").append(valorApartamento)
-	            		.append("\n\nValor total R$: ").append(valorTotal);
+	                    .append("Condomínio - R$: ").append(valorApartamento)
+	                    .append("\n\nValor total R$: ").append(valorApartamento + valorDespesas);
 	        }
 	    }
-	    JOptionPane.showMessageDialog(null, extrato.toString());
+	    if (!dataEncontrada) {
+	        JOptionPane.showMessageDialog(null, "Não há dados referentes à data solicitada para o apartamento informado.");
+	    } else {
+	        JOptionPane.showMessageDialog(null, extrato.toString());
+	    }
 	}
 
 	public ArrayList<Apartamento> getApartamento() {
