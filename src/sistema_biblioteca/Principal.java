@@ -18,7 +18,7 @@ public class Principal {
 			op = Integer.parseInt(JOptionPane.showInputDialog(menu));
 			
 			if (op == 1) {
-				JOptionPane.showMessageDialog(null, menu);
+				JOptionPane.showMessageDialog(null, "Cadastro Autor");
 			}
 			if (op == 2) {
 				
