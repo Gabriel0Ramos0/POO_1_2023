@@ -1,24 +1,18 @@
 package sistema_biblioteca;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 public class Bibliotecário {
 	
 	private String nome;
-	private Livro livro;
+	ArrayList <Livro> livros;
 	
-	public Bibliotecário() {
-		cadastraB();
+	public Bibliotecário(String nome) {
+		this.nome = nome;
+		this.livros = new ArrayList <Livro>();
 	}
-	
-	public void cadastraB() {
-		setNome (JOptionPane.showInputDialog(null, "Informe o nome do bibliotecário"));
-		
-	}
-	
-	public String exibirB() {
-		return "Bibliotecário: " + getNome();
-  	}
 
 	public String getNome() {
 		return nome;
@@ -32,12 +26,12 @@ public class Bibliotecário {
 		}
 	}
 
-	public Livro getLivro() {
-		return livro;
+	public ArrayList<Livro> getLivros() {
+		return livros;
 	}
 
-	public void setLivro(Livro livro) {
-		this.livro = livro;
+	public void setLivros(ArrayList<Livro> livros) {
+		this.livros = livros;
 	}
 	
 }

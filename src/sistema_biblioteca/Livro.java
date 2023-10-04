@@ -8,17 +8,14 @@ public class Livro {
 	private Autor autor;
 	private Bibliotecário bibliotecario;
 	
-	public Livro() {
-		cadastraL();
+	public Livro(String titulo, Autor autor, Bibliotecário bibliotecario) {
+		this.titulo = titulo;
+		this.autor = autor;
+		this.bibliotecario = bibliotecario;		
 	}
 	
-	public void cadastraL() {
-		setTitulo (JOptionPane.showInputDialog(null, "Informe o título do livro"));
-		bibliotecario.getNome();
-	}
-	
-	public String exibirL() {
-		return "Título do Livro: " + getTitulo();
+	public static String emprestaL(String nome) {
+		return "Livro emprestado para: " + nome;
 	}
 
 	public String getTitulo() {
@@ -29,7 +26,7 @@ public class Livro {
 		if(titulo != null && !titulo.isEmpty()) {
 			this.titulo = titulo;
 		} else {
-			setTitulo(JOptionPane.showInputDialog("É nescessário informar o título do livro!"));
+			setTitulo(JOptionPane.showInputDialog("É nescessário informar um  título!"));
 		}
 	}
 
