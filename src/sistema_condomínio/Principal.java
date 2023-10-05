@@ -34,6 +34,10 @@ public class Principal {
 				condominio.extratoDespesaTotalPorApartamento();
 			}
 			
+			if (op == 5) {
+				JOptionPane.showMessageDialog(null, "Saindo...");
+			}
+			
 		} while(op!=5);
 	}
 }
