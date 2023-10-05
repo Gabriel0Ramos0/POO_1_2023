@@ -7,31 +7,40 @@ import javax.swing.JOptionPane;
 public class Bibliotecário {
 	
 	private String nome;
-	ArrayList <Livro> livros;
-	
-	public Bibliotecário(String nome) {
-		this.nome = nome;
-		this.livros = new ArrayList <Livro>();
-	}
+    private ArrayList<Livro> livrosResponsabilidade;
+
+    public Bibliotecário(String nome) {
+        this.nome = nome;
+        this.livrosResponsabilidade = new ArrayList<>();
+    }
+
+    public void cadastrarLivro(String titulo, Autor autor) {
+        Livro livro = new Livro(titulo, autor, this);
+        livrosResponsabilidade.add(livro);
+        autor.adicionarLivro(livro);
+    }
+
+    public void listarLivrosSobResponsabilidade() {
+        System.out.println("Livros sob a responsabilidade do bibliotecário " + nome + ":");
+        for (Livro livro : livrosResponsabilidade) {
+            System.out.println("- " + livro.getTitulo() + " (Autor: " + livro.autor.getNome() + ")");
+        }
+    }
 
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
-		if(nome != null && !nome.isEmpty()) {
-			this.nome = nome;
-		} else {
-			setNome(JOptionPane.showInputDialog("É nescessário informar o nome do bibliotecário!"));
-		}
+		this.nome = nome;
 	}
 
-	public ArrayList<Livro> getLivros() {
-		return livros;
+	public ArrayList<Livro> getLivrosResponsabilidade() {
+		return livrosResponsabilidade;
 	}
 
-	public void setLivros(ArrayList<Livro> livros) {
-		this.livros = livros;
+	public void setLivrosResponsabilidade(ArrayList<Livro> livrosResponsabilidade) {
+		this.livrosResponsabilidade = livrosResponsabilidade;
 	}
 	
 }

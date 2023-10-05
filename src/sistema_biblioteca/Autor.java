@@ -7,35 +7,31 @@ import javax.swing.JOptionPane;
 public class Autor {
 	
 	private String nome;
-	private ArrayList<Livro> livros;
-	
-	public Autor(String nome, ArrayList<Livro> livros) {
-		this.nome = nome;
-		this.livros = livros;
-	}
-	
-	public void adicionaLivro(Livro livro) {
-		livros.add(livro);
-	}
+    private ArrayList<Livro> livrosEscritos;
+
+    public Autor(String nome) {
+        this.nome = nome;
+        this.livrosEscritos = new ArrayList<>();
+    }
+
+    public void adicionarLivro(Livro livro) {
+        livrosEscritos.add(livro);
+    }
+
+    public ArrayList<Livro> getLivrosEscritos() {
+        return livrosEscritos;
+    }
 
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
-		if(nome != null && !nome.isEmpty()) {
-			this.nome = nome;
-		} else {
-			setNome(JOptionPane.showInputDialog("É nescessário informar o nome do autor!"));
-		}
+		this.nome = nome;
 	}
 
-	public ArrayList<Livro> getLivros() {
-		return livros;
-	}
-
-	public void setLivros(ArrayList<Livro> livros) {
-		this.livros = livros;
+	public void setLivrosEscritos(ArrayList<Livro> livrosEscritos) {
+		this.livrosEscritos = livrosEscritos;
 	}
 	
 }

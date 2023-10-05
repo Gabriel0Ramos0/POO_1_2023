@@ -5,30 +5,22 @@ import javax.swing.JOptionPane;
 public class Livro {
 	
 	private String titulo;
-	private Autor autor;
-	private Bibliotecário bibliotecario;
-	
-	public Livro(String titulo, Autor autor, Bibliotecário bibliotecario) {
-		this.titulo = titulo;
-		this.autor = autor;
-		this.bibliotecario = bibliotecario;		
-	}
-	
-	public static String emprestaL(String nome) {
-		return "Livro emprestado para: " + nome;
-	}
+    Autor autor;
+    private Bibliotecário bibliotecario;
 
-	public String getTitulo() {
-		return titulo;
-	}
+    public Livro(String titulo, Autor autor, Bibliotecário bibliotecario) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.bibliotecario = bibliotecario;
+    }
 
-	public void setTitulo(String titulo) {
-		if(titulo != null && !titulo.isEmpty()) {
-			this.titulo = titulo;
-		} else {
-			setTitulo(JOptionPane.showInputDialog("É nescessário informar um  título!"));
-		}
-	}
+    public void emprestar(String pessoa) {
+        JOptionPane.showMessageDialog(null, "O livro '" + titulo + "' foi emprestado para " + pessoa);
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
 
 	public Autor getAutor() {
 		return autor;
@@ -45,5 +37,9 @@ public class Livro {
 	public void setBibliotecario(Bibliotecário bibliotecario) {
 		this.bibliotecario = bibliotecario;
 	}
-	
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+    
 }
