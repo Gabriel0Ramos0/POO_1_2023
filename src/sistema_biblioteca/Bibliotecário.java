@@ -32,7 +32,11 @@ public class Bibliotecário {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		if(nome != null && !nome.isEmpty()) {
+			this.nome = nome;
+		} else {
+			setNome(JOptionPane.showInputDialog("Informe o Nome do bibliotecário(a)!"));
+		}
 	}
 
 	public ArrayList<Livro> getLivrosResponsabilidade() {

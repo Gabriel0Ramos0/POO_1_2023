@@ -39,7 +39,11 @@ public class Livro {
 	}
 
 	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+		if(titulo != null && !titulo.isEmpty()) {
+			this.titulo = titulo;
+		} else {
+			setTitulo(JOptionPane.showInputDialog("Informe um título!"));
+		}
 	}
     
 }

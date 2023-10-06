@@ -27,7 +27,11 @@ public class Autor {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		if(nome != null && !nome.isEmpty()) {
+			this.nome = nome;
+		} else {
+			setNome(JOptionPane.showInputDialog("Informe o Nome do Autor(a)!"));
+		}
 	}
 
 	public void setLivrosEscritos(ArrayList<Livro> livrosEscritos) {
