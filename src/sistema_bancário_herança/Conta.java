@@ -40,7 +40,7 @@ public class Conta {
 		
 	}
 	
-	public  void selecionaConta() {
+	public Conta selecionaConta() {
 		int num = Integer.parseInt(JOptionPane.showInputDialog(null, "Selecione uma conta:\n" + "1- Corrente\n" + "2- Especial\n" + "3- Universitária"));
         Conta contaSelecionada = null;
 
@@ -51,7 +51,16 @@ public class Conta {
         } else if (num == 3) {
             contaSelecionada = new Conta_Universitaria(getNumero(), getAgencia(), getNome(), getSaldo());
         }
+        return contaSelecionada;
     }
+	
+	@Override
+	public String toString() {
+	    return "Número: " + numero + "\n" +
+	           "Agência: " + agencia + "\n" +
+	           "Nome do correntista: " + nome + "\n" +
+	           "Saldo: " + saldo;
+	}
 
 	public int getNumero() {
 		return numero;
