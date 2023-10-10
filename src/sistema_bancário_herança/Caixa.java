@@ -82,7 +82,7 @@ public class Caixa {
         if (num == 1) {
             novaConta = new Conta_Corrente(0, 0, null, 0);
         } else if (num == 2) {
-            novaConta = new Conta_Especial(0, 0, null, 0);
+            novaConta = new Conta_Especial(0, 0, null, 0, 0);
         } else if (num == 3) {
             novaConta = new Conta_Universitaria(0, 0, null, 0);
         }

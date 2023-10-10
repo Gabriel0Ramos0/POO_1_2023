@@ -27,6 +27,8 @@ public class Operação {
         if (getValor() <= 0) {
             JOptionPane.showMessageDialog(null, "O valor do saque deve ser maior que zero.");
             return;
+        } else if (valor > conta.getSaldo()) {
+            JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar o saque.");
         }
         
         double novoSaldo = conta.getSaldo() - getValor();

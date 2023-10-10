@@ -8,6 +8,7 @@ public class Conta {
 	protected int agencia;
 	protected String nome;
 	protected double saldo;
+	protected double limite;
 	protected int nu;
 	
 	public Conta (int numero, int agencia, String nome, double saldo) {
@@ -21,6 +22,10 @@ public class Conta {
 		setNumero (Integer.parseInt(JOptionPane.showInputDialog(null, "Informe o número da conta")));
 		setAgencia (Integer.parseInt(JOptionPane.showInputDialog(null, "Informe o número da agência")));
 		setNome (JOptionPane.showInputDialog(null, "Informe o nome do corretista (Usuário)"));
+		if (this instanceof Conta_Especial) {
+	        double limiteEspecial = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o limite da Conta Especial"));
+	        ((Conta_Especial) this).setLimite(limiteEspecial);
+	    }
 		setSaldo (Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o saldo")));
 	}
 	
@@ -31,7 +36,7 @@ public class Conta {
         if (num == 1) {
             contaSelecionada = new Conta_Corrente(getNumero(), getAgencia(), getNome(), getSaldo());
         } else if (num == 2) {
-            contaSelecionada = new Conta_Especial(getNumero(), getAgencia(), getNome(), getSaldo());
+            contaSelecionada = new Conta_Especial(getNumero(), getAgencia(), getNome(), getSaldo(), getLimite());
         } else if (num == 3) {
             contaSelecionada = new Conta_Universitaria(getNumero(), getAgencia(), getNome(), getSaldo());
         }
@@ -99,5 +104,13 @@ public class Conta {
 	public void setNu(int nu) {
 		this.nu = nu;
 	}
-		
+
+	public double getLimite() {
+		return limite;
+	}
+
+	public void setLimite(double limite) {
+		this.limite = limite;
+	}
+	
 }
