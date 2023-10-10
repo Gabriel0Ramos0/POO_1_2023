@@ -6,10 +6,9 @@ import javax.swing.JOptionPane;
 
 public class Caixa {
 	
+	static ArrayList<Conta> listaDeContas = new ArrayList<>();
+	
 	public static void main(String[] args) {
-		ArrayList<Conta> listaDeContas = new ArrayList<>();
-		
-		Conta conta = new Conta(0, 0, null, 0);
 		
 		String menu = "1- Cadastrar Conta\n" 
 				+ "2- Fazer uma Operação\n" 
@@ -30,8 +29,27 @@ public class Caixa {
             }
             
             if (op == 2) {
-            	
-            	
+                int numContaConsultar = Integer.parseInt(JOptionPane.showInputDialog("Digite o número da conta que deseja consultar"));
+                Conta contaSelecionada = null;
+                for (Conta c : listaDeContas) {
+                    if (c.getNumero() == numContaConsultar) {
+                        contaSelecionada = c;
+                        break;
+                    }
+                }
+                if (contaSelecionada != null) {
+                    if (contaSelecionada instanceof Conta_Corrente) {
+                        ((Conta_Corrente) contaSelecionada).SelecionaOperação();
+                    } else if (contaSelecionada instanceof Conta_Especial) {
+                        ((Conta_Especial) contaSelecionada).SelecionaOperação();
+                    } else if (contaSelecionada instanceof Conta_Universitaria) {
+                        ((Conta_Universitaria) contaSelecionada).SelecionaOperação();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Tipo de conta não suportado!");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Conta não encontrada!");
+                }
             }
             
             if (op == 3) {
@@ -70,4 +88,16 @@ public class Caixa {
         }
         return novaConta;
     }
+    
+	public static Conta localizaConta() {
+		int numContaConsultar = Integer.parseInt(JOptionPane.showInputDialog("Digite o número da conta que deseja consultar"));
+        Conta contaSelecionada = null;
+        for (Conta c : listaDeContas) {
+            if (c.getNumero() == numContaConsultar) {
+                contaSelecionada = c;
+                break;
+            }
+        }
+        return contaSelecionada;
+	}
 }

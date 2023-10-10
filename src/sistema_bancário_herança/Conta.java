@@ -24,22 +24,6 @@ public class Conta {
 		setSaldo (Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o saldo")));
 	}
 	
-	public void Operação() {
-		setNu (Integer.parseInt(JOptionPane.showInputDialog(null, "Operações:\n" + "1- Depósito\n" + "2- Saque" + "3- Transferência")));
-		Operação operação = new Operação();
-		
-		if (getNu() == 1) {
-			operação.Depósito();
-			
-		} else if (getNu() == 2) {
-			operação.Saque();
-			
-		} else if (getNu() == 3) {
-			operação.Transferência();
-		}
-		
-	}
-	
 	public Conta selecionaConta() {
 		int num = Integer.parseInt(JOptionPane.showInputDialog(null, "Selecione uma conta:\n" + "1- Corrente\n" + "2- Especial\n" + "3- Universitária"));
         Conta contaSelecionada = null;
@@ -56,11 +40,25 @@ public class Conta {
 	
 	@Override
 	public String toString() {
-	    return "Número: " + numero + "\n" +
+	    String tipoConta = "";
+	    
+	    if (this instanceof Conta_Corrente) {
+	        tipoConta = "Conta Corrente";
+	    } else if (this instanceof Conta_Especial) {
+	        tipoConta = "Conta Especial";
+	    } else if (this instanceof Conta_Universitaria) {
+	        tipoConta = "Conta Universitária";
+	    } else {
+	        tipoConta = "Tipo de conta desconhecido";
+	    }
+
+	    return "Tipo de Conta: (" + tipoConta + ")\n" +
+	           "Número: " + numero + "\n" +
 	           "Agência: " + agencia + "\n" +
 	           "Nome do correntista: " + nome + "\n" +
-	           "Saldo: " + saldo;
+	           "Saldo: R$" + saldo;
 	}
+
 
 	public int getNumero() {
 		return numero;
