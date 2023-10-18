@@ -17,13 +17,10 @@ public class Conta_Corrente extends Conta{
 		
 		if (getNu() == 1) {
 			operação.Deposito(this, listaDeContas);
-			
 		} else if (getNu() == 2) {
 			operação.Saque(this, listaDeContas);
-			
 		} else if (getNu() == 3) {
 			operação.Transferência(this, listaDeContas);
 		}
-		
 	}
 }

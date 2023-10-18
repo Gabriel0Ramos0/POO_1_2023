@@ -27,6 +27,16 @@ public class Conta {
 	        ((Conta_Especial) this).setLimite(limiteEspecial);
 	    }
 		setSaldo (Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o saldo")));
+		if (this instanceof Conta_Especial) {
+			if (getSaldo() > getLimite()) {
+				setSaldo (Double.parseDouble(JOptionPane.showInputDialog(null, "Valor acima do permitido (R$ " + getLimite() + "). Por favor, digite um valor dentro do limite!")));
+			}
+	    }
+		if (this instanceof Conta_Universitaria) {
+			if (getSaldo() > 2000) {
+				setSaldo (Double.parseDouble(JOptionPane.showInputDialog(null, "Valor acima do permitido (R$ 2.000,00). Por favor, digite um valor dentro do limite!")));
+			}
+	    }
 	}
 	
 	public Conta selecionaConta() {
@@ -64,13 +74,16 @@ public class Conta {
 	           "Saldo: R$" + saldo;
 	}
 
-
 	public int getNumero() {
 		return numero;
 	}
 
 	public void setNumero(int numero) {
-		this.numero = numero;
+		if (numero > 0) {
+	        this.numero = numero;
+		} else {
+			setNumero(Integer.parseInt(JOptionPane.showInputDialog(null, "O número deve ser maior que 0!")));
+		}
 	}
 
 	public int getAgencia() {
@@ -78,7 +91,11 @@ public class Conta {
 	}
 
 	public void setAgencia(int agencia) {
-		this.agencia = agencia;
+		if (agencia > 0) {
+			this.agencia = agencia;
+		} else {
+			setAgencia(Integer.parseInt(JOptionPane.showInputDialog(null, "O número da agência deve ser maior que 0!")));
+		}
 	}
 
 	public String getNome() {
@@ -86,7 +103,11 @@ public class Conta {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		if(nome != null && !nome.isEmpty()) {
+			this.nome = nome;
+		} else {
+			setNome(JOptionPane.showInputDialog("É nescessário informar o nome!"));
+		}
 	}
 
 	public double getSaldo() {
@@ -94,7 +115,11 @@ public class Conta {
 	}
 
 	public void setSaldo(double saldo) {
-		this.saldo = saldo;
+		if (saldo > 0) {
+			this.saldo = saldo;
+		} else {
+			setSaldo(Double.parseDouble(JOptionPane.showInputDialog(null, "O saldo deve ser maior que 0!")));
+		}
 	}
 
 	public int getNu() {
@@ -102,7 +127,11 @@ public class Conta {
 	}
 
 	public void setNu(int nu) {
+		if (nu > 0) {
 		this.nu = nu;
+		} else {
+			setNu (Integer.parseInt(JOptionPane.showInputDialog(null, "O número deve ser maior que 0!")));
+		}
 	}
 
 	public double getLimite() {
@@ -110,7 +139,10 @@ public class Conta {
 	}
 
 	public void setLimite(double limite) {
-		this.limite = limite;
+		if (limite > 0) {
+			this.limite = limite;
+		} else {
+			setLimite(Double.parseDouble(JOptionPane.showInputDialog(null, "O limite deve ser maior que 0!")));
+		}
 	}
-	
 }

@@ -17,14 +17,11 @@ public class Conta_Universitaria extends Conta{
 		
 		if (getNu() == 1) {
 			Deposito(this);
-			
 		} else if (getNu() == 2) {
 			operação.Saque(this, listaDeContas);
-			
 		} else if (getNu() == 3) {
 			Transferencia(this, listaDeContas);
 		}
-		
 	}
 	
 	public void Deposito(Conta conta) {
@@ -51,7 +48,7 @@ public class Conta_Universitaria extends Conta{
         } else if (valor <= 0) {
             JOptionPane.showMessageDialog(null, "O valor da transferência deve ser maior que zero.");
         }    
-        Conta contaDestino = Caixa.localizaConta();
+        Conta contaDestino = Principal.localizaConta();
             
         if (contaDestino == null) {
             JOptionPane.showMessageDialog(null, "Conta de destino não encontrada.");

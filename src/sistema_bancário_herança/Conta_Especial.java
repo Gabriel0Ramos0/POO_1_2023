@@ -17,27 +17,25 @@ public class Conta_Especial extends Conta {
 		
 		if (getNu() == 1) {
 			operação.Deposito(this, listaDeContas);
-			
 		} else if (getNu() == 2) {
 			Saque();
-			
 		} else if (getNu() == 3) {
 			Transferencia(this, listaDeContas);
 		}
 	}
 	
 	public void Saque() {
-        double valor = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o valor da transferência"));
+        double valor = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o valor do saque"));
         
         if (valor > getLimite()) {
-        	JOptionPane.showMessageDialog(null, "Não é possível transferir este valor, pois passa do limite oferecido!");
+        	JOptionPane.showMessageDialog(null, "Não é possível sacar este valor, pois passa do limite oferecido!");
         } else if (valor <= 0) {
-            JOptionPane.showMessageDialog(null, "O valor da transferência deve ser maior que zero.");
+            JOptionPane.showMessageDialog(null, "O valor do saque deve ser maior que zero.");
         } else if (valor > getSaldo()) {
-            JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar a transferência.");
+            JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar o saque.");
         } else {
             setSaldo(getSaldo() - valor);
-            JOptionPane.showMessageDialog(null, "Transferência de R$" + valor + " realizado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Saque de R$" + valor + " realizado com sucesso!");
         }
     }
 	
@@ -49,7 +47,7 @@ public class Conta_Especial extends Conta {
         } else if (valor <= 0) {
             JOptionPane.showMessageDialog(null, "O valor da transferência deve ser maior que zero.");
         }    
-        Conta contaDestino = Caixa.localizaConta();
+        Conta contaDestino = Principal.localizaConta();
             
         if (contaDestino == null) {
             JOptionPane.showMessageDialog(null, "Conta de destino não encontrada.");

@@ -44,7 +44,7 @@ public class Operação {
 	        return;
 	    }
 
-	    Conta contaDestino = Caixa.localizaConta();
+	    Conta contaDestino = Principal.localizaConta();
 
 	    if (contaDestino == null) {
 	        JOptionPane.showMessageDialog(null, "Conta de destino não encontrada.");
