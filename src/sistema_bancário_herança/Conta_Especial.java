@@ -13,17 +13,17 @@ public class Conta_Especial extends Conta {
 	}
 	public void SelecionaOperação() {
 		setNu (Integer.parseInt(JOptionPane.showInputDialog(null, "Operações:\n\n" + "1- Depósito\n" + "2- Saque\n" + "3- Transferência")));
-		Operação operação = new Operação();
 		
 		if (getNu() == 1) {
-			operação.Deposito(this, listaDeContas);
+			super.Deposito();
 		} else if (getNu() == 2) {
 			Saque();
 		} else if (getNu() == 3) {
-			Transferencia(this, listaDeContas);
+			super.Transferência();
 		}
 	}
 	
+	@Override
 	public void Saque() {
         double valor = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o valor do saque"));
         
@@ -39,7 +39,8 @@ public class Conta_Especial extends Conta {
         }
     }
 	
-	public void Transferencia(Conta contaOrigem, ArrayList<Conta> listaDeContas) {
+	@Override
+	public void Transferência() {
         double valor = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o valor da Transferência"));
         
         if (valor > getLimite()) {
@@ -54,21 +55,17 @@ public class Conta_Especial extends Conta {
             return;
         }
         
-        if (contaOrigem != contaDestino) {
-            if ((contaOrigem.getSaldo() - valor) < 0 || (contaOrigem.getSaldo() + valor) > contaOrigem.getLimite()) {
+            if ((getSaldo() - valor) < 0 || (getSaldo() + valor) > getLimite()) {
                 JOptionPane.showMessageDialog(null, "Transferência não permitida devido ao limite ou saldo insuficiente.");
                 return;
             }
 
-            double novoSaldoOrigem = contaOrigem.getSaldo() - valor;
-            contaOrigem.setSaldo(novoSaldoOrigem);
+            double novoSaldoOrigem = getSaldo() - valor;
+            setSaldo(novoSaldoOrigem);
 
             double novoSaldoDestino = contaDestino.getSaldo() + valor;
             contaDestino.setSaldo(novoSaldoDestino);
 
             JOptionPane.showMessageDialog(null, "Transferência de R$" + valor + " realizada com sucesso da conta de origem para a conta de destino.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Você não pode transferir para a mesma conta.");
         }
     }
-}

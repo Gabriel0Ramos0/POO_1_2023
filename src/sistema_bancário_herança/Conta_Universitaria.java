@@ -13,18 +13,18 @@ public class Conta_Universitaria extends Conta{
 	}
 	public void SelecionaOperação() {
 		setNu (Integer.parseInt(JOptionPane.showInputDialog(null, "Operações:\n\n" + "1- Depósito\n" + "2- Saque\n" + "3- Transferência")));
-		Operação operação = new Operação();
 		
 		if (getNu() == 1) {
-			Deposito(this);
+			Deposito();
 		} else if (getNu() == 2) {
-			operação.Saque(this, listaDeContas);
+			super.Saque();
 		} else if (getNu() == 3) {
-			Transferencia(this, listaDeContas);
+			super.Transferência();
 		}
 	}
 	
-	public void Deposito(Conta conta) {
+	@Override
+	public void Deposito() {
 		double valor = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o valor do depósito"));
         if (valor <= 0) {
             JOptionPane.showMessageDialog(null, "O valor do depósito deve ser maior que zero.");
@@ -32,15 +32,16 @@ public class Conta_Universitaria extends Conta{
             if ((getSaldo() + valor) > 2000) {
                 JOptionPane.showMessageDialog(null, "O saldo não pode ultrapassar 2.000,00.");
             } else {
-            	double novoSaldo = conta.getSaldo() + valor;
-                conta.setSaldo(novoSaldo);
+            	double novoSaldo = getSaldo() + valor;
+                setSaldo(novoSaldo);
 
                 JOptionPane.showMessageDialog(null, "Depósito de R$" + valor + " realizado com sucesso!");
             }
         }
 	}
 	
-	public void Transferencia(Conta contaOrigem, ArrayList<Conta> listaDeContas) {
+	@Override
+	public void Transferência() {
         double valor = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o valor da Transferência"));
         
         if (valor > 2000) {
@@ -55,21 +56,17 @@ public class Conta_Universitaria extends Conta{
             return;
         }
         
-        if (contaOrigem != contaDestino) {
-            if ((contaOrigem.getSaldo() - valor) < 0 || (contaOrigem.getSaldo() + valor) > 2000) {
+            if ((getSaldo() - valor) < 0 || (getSaldo() + valor) > 2000) {
                 JOptionPane.showMessageDialog(null, "Transferência não permitida devido ao limite de R$2.000,00 ou saldo insuficiente.");
                 return;
             }
 
-            double novoSaldoOrigem = contaOrigem.getSaldo() - valor;
-            contaOrigem.setSaldo(novoSaldoOrigem);
+            double novoSaldoOrigem = getSaldo() - valor;
+            setSaldo(novoSaldoOrigem);
 
             double novoSaldoDestino = contaDestino.getSaldo() + valor;
             contaDestino.setSaldo(novoSaldoDestino);
 
             JOptionPane.showMessageDialog(null, "Transferência de R$" + valor + " realizada com sucesso da conta de origem para a conta de destino.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Você não pode transferir para a mesma conta.");
-        }
+        } 
     }
-}
