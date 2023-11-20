@@ -11,9 +11,9 @@ public class Conta_Universitária extends Conta {
 	}
 	
 	@Override
-	public boolean depositar(double vl) {
+	public boolean deposito(double vl) {
 		if(saldo + vl < 2000) {
-			return super.depositar(vl);
+			return super.deposito(vl);
 		}
 		return false;
 	}	

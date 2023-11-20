@@ -4,82 +4,79 @@ public class Conta {
 	
 	protected int numero;
 	protected int agencia;
-	protected String nome;
+	protected String cliente;
 	protected double saldo;
 	
-	public Conta(int numero, int agencia, String nome, double saldo) {
-		super();
+	
+	
+	public Conta() {
+		this(0, 0, "", 0);
+	}
+
+
+	public Conta(int numero, int agencia, String cliente, double saldo) {
 		this.numero = numero;
 		this.agencia = agencia;
-		this.nome = nome;
+		this.cliente = cliente;
 		this.saldo = saldo;
 	}
-	public Conta() {
-		this(0,0,null,0);
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Conta (numero=" + numero + ", agencia=" + agencia + ", nome=" + nome + ", saldo=" + saldo + ")";
+		return getNumero()+"-"+getCliente()+"- R$"+getSaldo()+"\n";
 	}
 	
-	public boolean depositar (double vl) {
-		if (saldo <= 0) {
-			saldo += vl;
-			return true;
-		} 
-		return false;
+	
+	public boolean deposito(double vl) {
+		saldo += vl;
+		return true;
 	}
 	
-	public boolean sacar (double vl) {
-		if (saldo <= 0) {
+	public boolean saque(double vl) {
+		if(saldo >= vl) {
 			saldo -= vl;
 			return true;
-		} 
+		}
 		return false;
 	}
 	
-	public boolean transferir (Conta destino, double vl) {
-		if (sacar(vl)) {
-			if (destino.depositar(vl)) {
+	public boolean transferencia(Conta destino, double vl) {
+		if(saque(vl)) {
+			if(destino.deposito(vl)) {
 				return true;
-			} else {
-				depositar(vl);
+			}else {
+				deposito(vl);
 				return false;
 			}
 		}
 		return false;
 	}
 	
+	
 	public int getNumero() {
 		return numero;
 	}
-
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-
 	public int getAgencia() {
 		return agencia;
 	}
-
 	public void setAgencia(int agencia) {
 		this.agencia = agencia;
 	}
-
-	public String getNome() {
-		return nome;
+	public String getCliente() {
+		return cliente;
 	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
 	}
-
 	public double getSaldo() {
 		return saldo;
 	}
-
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
+
 }
