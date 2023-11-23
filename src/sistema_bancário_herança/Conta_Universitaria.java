@@ -15,7 +15,7 @@ public class Conta_Universitaria extends Conta{
 		setNu (Integer.parseInt(JOptionPane.showInputDialog(null, "Operações:\n\n" + "1- Depósito\n" + "2- Saque\n" + "3- Transferência")));
 		
 		if (getNu() == 1) {
-			Deposito();
+			super.Deposito();
 		} else if (getNu() == 2) {
 			super.Saque();
 		} else if (getNu() == 3) {

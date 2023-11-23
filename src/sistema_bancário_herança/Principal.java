@@ -15,39 +15,38 @@ public class Principal {
 				+ "3- Consutar conta\n"
 				+ "4- Sair";
 		
-		int op = 0;
-        do {
-            op = Integer.parseInt(JOptionPane.showInputDialog(menu));
-            
-            if (op == 1) {
-                Conta novaConta = selecionaTipoConta();
-                if (novaConta != null) {
-                    novaConta.CadastraConta();
-                    listaDeContas.add(novaConta);
-                    JOptionPane.showMessageDialog(null, "Conta criada com sucesso!");
-                }
-            }
-            
-            if (op == 2) {
-            	Caixa caixa = new Caixa();
-            }
-            
-            if (op == 3) {
-            	Conta contaSelecionada = localizaConta();
-                if (contaSelecionada != null) {
-                    JOptionPane.showMessageDialog(null, "Informações da conta selecionada:\n\n" + contaSelecionada);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Conta não encontrada!");
-                }
-            }
-            
-            if (op == 4) {
-                JOptionPane.showMessageDialog(null, "Saindo...");
-            }
-            
-        } while (op != 4);
+			int op = 0;
+	        do {
+	            op = Integer.parseInt(JOptionPane.showInputDialog(menu));
+	            
+	            if (op == 1) {
+	                Conta novaConta = selecionaTipoConta();
+	                if (novaConta != null) {
+	                    novaConta.CadastraConta();
+	                    listaDeContas.add(novaConta);
+	                    JOptionPane.showMessageDialog(null, "Conta criada com sucesso!");
+	                }
+	            }
+	            
+	            if (op == 2) {
+	            	Caixa caixa = new Caixa();
+	            }
+	            
+	            if (op == 3) {
+	            	Conta contaSelecionada = localizaConta();
+	                if (contaSelecionada != null) {
+	                    JOptionPane.showMessageDialog(null, "Informações da conta selecionada:\n\n" + contaSelecionada);
+	                } else {
+	                    JOptionPane.showMessageDialog(null, "Conta não encontrada!");
+	                }
+	            }
+	            
+	            if (op == 4) {
+	                JOptionPane.showMessageDialog(null, "Saindo...");
+	            }            
+	        } while (op != 4);
     }
-    
+		
     public static Conta selecionaTipoConta() {
         int num = Integer.parseInt(JOptionPane.showInputDialog(null, "Selecione um tipo de conta:\n" + "1- Corrente\n" + "2- Especial\n" + "3- Universitária"));
         Conta novaConta = null;

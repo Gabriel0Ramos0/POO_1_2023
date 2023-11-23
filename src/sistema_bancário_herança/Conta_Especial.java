@@ -17,7 +17,7 @@ public class Conta_Especial extends Conta {
 		if (getNu() == 1) {
 			super.Deposito();
 		} else if (getNu() == 2) {
-			Saque();
+			super.Saque();
 		} else if (getNu() == 3) {
 			super.Transferência();
 		}
